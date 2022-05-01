@@ -56,8 +56,10 @@ completium-cli deploy 2-exec_condition.arl
 The following command calls the unique entry point with the argument `14` using the `--with` option:
 
 ```
-completium-cli call 2-exec-condition --entry main --arg '{ "v" : 14 }'
+completium-cli call 2-exec_condition --entry main --arg '{ "v" : 14 }'
 ```
+
+If the contract call fails with an `InvalidCaller` error, it is because your tezos test address does not match the `admin` address specified in the contract code, which proves that the execution condition works as intended. To successfully call the contract, modify the `admin` address in the code to match your own wallet address, which is listed when you run `completium-cli show account`. You need to redeploy the contract when making any changes to the code.
 
 ## View contract
 
