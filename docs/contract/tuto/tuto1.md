@@ -10,7 +10,11 @@ import Link from '@docusaurus/Link';
 
 ## Welcome!
 
-In this first exercise, the storage is a single string value, initialised to `""`; the unique entry point is called to set the value:
+In this first exercise, the storage is a single string value, initialised to `""`; the unique entry point is called to set the value of `str`
+
+### Assign value
+
+Use the assignment instruction [`:=`](https://archetype-lang.org/docs/reference/instructions/assignment/#a--b) to assign a value to `str`.
 
 ```archetype {6} title="1-hello.arl"
 archetype hello
@@ -25,8 +29,6 @@ entry main () {
 :::info
 Do not forget to save the file with Ctrl+s (or Cmd+s)
 :::
-
-Use the `:=` operator to assign value to storage variable.
 
 ### Deploy
 
