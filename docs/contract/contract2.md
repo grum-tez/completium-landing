@@ -48,35 +48,5 @@ The contract is available at the address [KT1Gbu1Gm2U47Pmq9VP7ZMy3ZLKecodquAh4](
 A smart contract is a public object. As such it is required to convey confidence in the business process it implements. It is then suggested to use register languages which make the code easier to read, write and <Link to='/docs/dapp-tools/tezos#formal-verification'>verify</Link>.
 
 Several register languages are available and listed <a href='https://tezos.com/developer-portal/#2-write-a-smart-contract'>here</a>. They compile contracts to Michelson.
-## Archetype
-
-In the DApps presented here we are using <a href='https://archetype-lang.org/'>Archetype</a>, a high-level language to develop Smart Contracts on the Tezos blockchain, with all Michelson features, plus exclusive features (new types, state machine design, ...) to ease development, tests and formal verification.
-
-For example, below is the <a href='https://archetype-lang.org/'>Archetype</a> version of the above contract:
-
-```archetype
-archetype c3n(admins : list<address>, hash : bytes)
-
-entry register (newadmins : option<list<address>>,
-                oldhash : bytes,
-                newhash : bytes) {
-  require {
-    r1: oldhash = hash;
-    r2: contains(admins, caller);
-  }
-  effect {
-    hash := newhash;
-    match newadmins with
-    | some(nadmins) -> admins := nadmins
-    | none -> ()
-    end
-  }
-}
-```
-
-Completium provides a convenient set of <Link to='/docs/templates'>contract templates</Link> to start your project from. Learn the Archetype language with a eight steps online tutorial:
-
-<DappFigure img='archetype.svg' width='50%' />
-<DappButton url="https://gitpod.io/#https://github.com/edukera/try-archetype" txt="archetype tutorial"/>
 
 

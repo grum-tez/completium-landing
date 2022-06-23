@@ -51,6 +51,10 @@ module.exports = {
     'contract/contract2',
     { type: 'category',
       label: 'Archetype Tutorial',
+      link: {
+        type: 'doc',
+        id: 'contract/tuto/tutorial',
+      },
       items: [
         'contract/tuto/tuto1',
         'contract/tuto/tuto2',
