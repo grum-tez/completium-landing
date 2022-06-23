@@ -418,7 +418,7 @@ getter get_count(k : address) : nat {
 Call `get_count` with `runGetter`:
 
 ```js
-const count = await runGetter(c, "get_count", { argMichelson: `"${$pkh}"`, as : pkh})
+const count = await runGetter("get_count", c, { argMichelson: `"${$pkh}"`, as : pkh})
 console.log(count.int)
 ```
 where:
