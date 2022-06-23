@@ -1,57 +1,3 @@
----
-id: template10
-title: Auction
-sidebar_label: Auction
-slug: /templates/auction
----
-import Link from '@docusaurus/Link';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import DeployIOT from './DeployIOT';
-
-## Introduction
-
-Auction process to transfer a <Link to='/docs/templates/nft'>FA2 NFT</Link> to best bidder.
-
-The best bid is escrowed by the contract til ownership is claimed. Previous best bidder gets its bid back. When asset ownership claimed, it is transfered to asset owner.
-
-The contract calls the FA2 contract to check NFT ownership, and transfer ownership when auction is over.
-
-The benefit of splitting the auction process from the FA2 ledger is that it makes it possible to change or select the appropriate auction process, while keeping the ledger intact.
-## API
-
-### Storage
-
-| Name | Type | Description |
-| -- | -- | -- |
-| `assetid` | `bytes` | Id of sold item. |
-| `owner` | `address` | Address to collect best bid. |
-| `auction_dur` | `duration` | Auction duration. |
-| `dur_incr` | `duration` | Increment of auction duration when a bid is placed. |
-| `nft` | `collection` | An NFT auction is defined by:<ul><li>nft id</li><li>`owner` of the NFT</li><li>`bestbidder` option of address of best bidder</li><li>`best` best bid amount</li><li>`endofbid` date of the end of bid</li></ul> |
-
-### Entrypoints
-
-The transfer of ownership performed by `calim` supposes that the NFT owner calls the `update_operators` entrypoint of the <Link to='/docs/templates/nft'>FA2 contract</Link>.
-
-| Name | Parameters | Description |
-| -- | -- | -- |
-| `upforsale` | `id`, `price` | Owner sets the NFT `id` up for sale. <p />Sets date of end of bid to `now + auction_dur`. <p />FA2 NFT contract entrypoint `balance_of` is called to check that caller is the owner of NFT `id`. |
-| `bid` | `id` | Places a bid for NFT `id`. Bid amount is transferred. <p />If this is best bid, previous best bid amount is transferred back to previous bet bidder. |
-| `claim` | `id`| Transfers escrowed bid amount to `owner` if auction is over for NFT `id`. New `owner` value is set to `bestbidder`.<p />FA2 NFT contract entrypoint `transfer` is called to transfer ownership to best bidder. |
-
-## Code
-
-<Tabs
-  defaultValue="archetype"
-  values={[
-    { label: 'Archetype', value: 'archetype', },
-    { label: 'Michelson', value: 'michelson', },
-  ]}>
-
-<TabItem value="archetype">
-
-```archetype title="auction.arl"
 
 archetype auction(
   nftoken     : address,
@@ -209,8 +155,3 @@ entry claim (id : nat) {
     nft.remove(id);
   }
 }
-```
-
-</TabItem>
-
-</Tabs>

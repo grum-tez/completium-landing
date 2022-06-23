@@ -20,13 +20,13 @@ archetype exec_condition
 
 variable value : nat = 0
 
-constant admin : address = @tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P
+constant admin : address = tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P
 
 entry main(v : nat) {
   called by admin
   require {
       r1: 10 <= v < 20;
-      r2 otherwise "EXPECTED EVEN VALUE": v % 2 = 0
+      r2: v % 2 = 0 otherwise "EXPECTED EVEN VALUE":
   }
   effect {
      value := v;

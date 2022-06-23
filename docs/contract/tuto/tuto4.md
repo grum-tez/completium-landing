@@ -14,10 +14,10 @@ The `date` and `duration` types are convenient to establish time related busines
 
 The call to the entry point succeeds if the contract was created more than 5 minutes and 10 seconds ago; the contract balance must be transferred to caller:
 
-```archetype {6-11} title="4-time_window.arl"
-archetype time_window
+```archetype {7} title="4-time_window.arl"
+archetype time_window(const creation_date : date)
 
-variable creation : date = now
+variable creation : date = creation_date
 
 entry payback_after_period () {
   require {
@@ -35,11 +35,11 @@ There are several ways to initialize dates and durations:
 
 ```archetype
 var d : duration = 3w8d4h34m18s; (* 3 weeks 8 days 4 hours 34 minutes 18 seconds *)
-var date0 : date = 2019-01-01;                (* iso 8601 *)
-var date1 : date = 2019-01-01T01:02:03;       (* iso 8601 *)
-var date2 : date = 2019-01-01T01:02:03Z;      (* iso 8601 *)
-var date3 : date = 2019-01-01T00:00:00+01:00; (* iso 8601 *)
-var date4 : date = 2019-01-01T00:00:00-05:30; (* iso 8601 *)
+var date0 : date = 2019-01-01;                /* iso 8601 */
+var date1 : date = 2019-01-01T01:02:03;       /* iso 8601 */
+var date2 : date = 2019-01-01T01:02:03Z;      /* iso 8601 */
+var date3 : date = 2019-01-01T00:00:00+01:00; /* iso 8601 */
+var date4 : date = 2019-01-01T00:00:00-05:30; /* iso 8601 */
 ```
 
 
@@ -47,8 +47,8 @@ var date4 : date = 2019-01-01T00:00:00-05:30; (* iso 8601 *)
 
 The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
 
-```
-completium-cli deploy 4-time_window.arl --amount 5tz
+```bash
+completium-cli deploy 4-time_window.arl --amount 5tz --parameters "{ \"creation_date\" : \"``date +%s`\" }"
 ```
 
 Note here that the contract's balance is intialized to 5tz.
@@ -66,7 +66,7 @@ If you try this command before valid timelapse of 5 minutes and 10 seconds, it r
 ```bash
 $ completium-cli call 4-time_window --entry payback_after_period
 Error from contract KT1HEH4Hff6Dq53PsoaX18wnkx1bVaPKnZGH (4-time_window):
-failed at 41 with (Pair "InvalidCondition" "r1")
+failed at 41 with (Pair "INVALID_CONDITION" "r1")
 ```
 ### Next
 
