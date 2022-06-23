@@ -38,7 +38,7 @@ entry set_n(addr : address) {
 }
 ```
 
-A detailed presentation of the `transfer` instruction may be found <a href='/docs/reference/instructions/operation#transfer' target='_blank'>here</a>.
+A detailed presentation of the `transfer` instruction may be found <a href='https://archetype-lang.org/docs/reference/instructions/operation#transfer' target='_blank'>here</a>.
 
 ## Deploy
 

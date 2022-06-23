@@ -15,10 +15,10 @@ In this first exercise, the storage is a single string value, initialised to `""
 ```archetype {6} title="1-hello.arl"
 archetype hello
 
-variable value : string = ""
+variable str : string = ""
 
 entry main () {
-  value := "Hello Tezos world!"
+  str := "Hello Tezos world!"
 }
 ```
 
@@ -30,31 +30,29 @@ Use the `:=` operator to assign value to storage variable.
 
 ### Deploy
 
-First, check whether the test account has enough balance to run the tutorial; entrer this command in the <Link to='/docs/dapp-tools/gitpod#user-interface'>Terminal</Link>:
-
-```
-completium-cli show account
-```
-
-It displays the balance of the account named 'admin'.
-
-If this balance is below 10 ꜩ, then follow these <Link to='/docs/dapp-tools/gitpod#check-admin-account'>instructions</Link> to import a new account (or transfer 100 ꜩ to the admin address on testnet).
-
-The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract on the Tezos network:
-
-```
-completium-cli deploy 1-hello.arl
-```
-
-This command must be run in the `tutorial` directory, so enter this command first:
+Change directory to the `tutorial` directory:
 
 ```
 cd tutorial
 ```
 
+The following <Link to='/docs/cli'>Completium CLI</Link> command deploys the contract (in [mockup](https://completium.com/docs/cli/network#mockup) mode here):
+
+```
+completium-cli deploy 1-hello.arl
+```
+
+### Check storage
+
+Check that storage is an *empty string* (initial value of `str` value)
+
+```
+completium-cli show storage 1-hello
+```
+
 ### Call entry point
 
-The following command calls the unique entry point:
+Call the entry point `main`:
 
 ```
 completium-cli call 1-hello --entry main
@@ -62,12 +60,12 @@ completium-cli call 1-hello --entry main
 
 ### View contract
 
-The following command generates the URL to view the contract in Better call Dev:
+Check that storage is now `"Hello Tezos world!"`
 
 ```
-completium-cli show contract 1-hello
+completium-cli show storage 1-hello
 ```
 
 ### Next
 
-Open '2-exec-condition.arl' and click on "Next: Executions conditions" below.
+Click "Next: Executions conditions" below.
