@@ -61,7 +61,7 @@ Follow <u><Link to="/docs/dapp-tools/thanos">this link</Link></u> for instructio
 
 This section describes how to download and import in Completium-cli a test account from the faucet.
 
-<DappButton url="https://teztnets.xyz/ithacanet-faucet" txt="open faucet"/>
+<DappButton url="https://teztnets.xyz/ghostnet-faucet" txt="open faucet"/>
 
 Follow the instructions below to donwload a new test account file:
 * click the "open faucet" button above to open the faucet web page

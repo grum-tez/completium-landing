@@ -5,6 +5,7 @@ sidebar_label: Account
 slug: /cli/account
 ---
 import Link from '@docusaurus/Link';
+import DappButton from '../DappButton';
 
 Interacting with a contract requires a Tezos account to sign the transactions. An account is identified by an account address starting by `tz1`, like for example `tz1h4CiqWxNe4UxSpkwXy617RM6DaK6NU76P`.
 
@@ -16,7 +17,7 @@ Interacting with a contract requires a Tezos account to sign the transactions. A
 
 When working with the test network, you need *fake* currencies to interact and test the contracts. There exists a [faucet](/docs/dapp-tools/faucet#create-a-test-account) from which you can download a faucet file to generate a test account from.
 
-<DappButton url="https://faucet.tzalpha.net/" txt="open faucet"/>
+<DappButton url="https://teztnets.xyz/ghostnet-faucet" txt="open faucet"/>
 
 Once the faucet file (a `.json` file) downloaded, the following command generates the account from it:
 
