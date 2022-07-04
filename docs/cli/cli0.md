@@ -33,9 +33,8 @@ Once installed, run the `init` command:
 completium-cli init
 ```
 
-:::warning
-If completium CLI was already installed, this command erases previous configuration (accounts, contracts, endpoints).<br/>
-Run `completium-cli init --soft` to keep previous configuration.
+:::info
+Run `completium-cli init` every time a new version of Completium CLI is installed.
 :::
 
 
