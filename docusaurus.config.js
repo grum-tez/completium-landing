@@ -8,12 +8,8 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'edukera', // Usually your GitHub org/user name.
   projectName: 'completium-landing', // Usually your repo name.
-  stylesheets: [
-    "https://fonts.googleapis.com/icon?family=Material+Icons",
-  ],
-  plugins: [
-    './src/plugins/dapp',
-  ],
+  stylesheets: ['https://fonts.googleapis.com/icon?family=Material+Icons'],
+  plugins: ['./src/plugins/dapp'],
   themeConfig: {
     navbar: {
       hideOnScroll: true,
@@ -38,8 +34,16 @@ module.exports = {
         { to: 'docs/dapp-first', label: 'First DApp', position: 'left' },
         { to: 'dapps', label: 'DApps', position: 'left' },
         { to: '/docs/contract', label: 'Smart Contract', position: 'left' },
-        { to: '/docs/templates', label: 'Contract Templates', position: 'left' },
-        { to: '/docs/verification', label: 'Formal Verification', position: 'left' },
+        {
+          to: '/docs/templates',
+          label: 'Contract Templates',
+          position: 'left',
+        },
+        {
+          to: '/docs/verification',
+          label: 'Formal Verification',
+          position: 'left',
+        },
         { to: '/docs/cli', label: 'CLI', position: 'left' },
         { to: 'docs/dapp-tools', label: 'Technical stack', position: 'left' },
         // {to: 'blog', label: 'Blog', position: 'left'},
@@ -70,11 +74,11 @@ module.exports = {
           items: [
             {
               label: 'Slack',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              href: 'https://join.slack.com/t/tezos-dev/shared_invite/zt-1itnwbcmb-5ixvjUYSM1gd4GbGoXIOsw',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://twitter.com/archetype_lang',
             },
           ],
         },
@@ -106,8 +110,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/edukera/completium-landing/tree/master',
+          editUrl: 'https://github.com/edukera/completium-landing/tree/master',
         },
         blog: {
           showReadingTime: true,
@@ -121,4 +124,4 @@ module.exports = {
       },
     ],
   ],
-};
+}
